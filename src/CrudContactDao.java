@@ -69,7 +69,6 @@ public class CrudContactDao implements ContactDao {
 
     for (int i = 0; i < l.size(); i++) {
       if (l.get(i).equals(con)) {
-        boolean test = l.get(i).equals(con);
         l.remove(i);
         break;
       }
