@@ -125,6 +125,7 @@ public class CrudContactDao implements ContactDao {
       }
 
       return true;
+      
     } catch(Exception e) {
       System.out.println("Error: " + e.getMessage());
       return false;

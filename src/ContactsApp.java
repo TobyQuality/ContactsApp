@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.List;
 
 public class ContactsApp {
+    /* s
     private static CrudContactDao dao = new CrudContactDao();
     private final static String INTRO = "Commands:\n"
     + "show - show all of your contacts\n"
@@ -11,6 +12,7 @@ public class ContactsApp {
     + "help - show all the commands\n"
     + "quit - quit the application\n";
 
+    
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -203,5 +205,7 @@ public class ContactsApp {
     public static void help() {
         System.out.println(INTRO);
     }
+
+    */
 
 }
