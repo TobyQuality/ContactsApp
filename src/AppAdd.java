@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.util.List;
 
 public class AppAdd extends JFrame implements ActionListener {
 
@@ -61,25 +62,41 @@ public class AppAdd extends JFrame implements ActionListener {
                 }
             }
 
-
             if (validationSuccessful) {
-                boolean successfullAdd = dao.addContact(c);
-                c = new Contact();
-                for (int i=0; i < attributes.length; i++) {
-                    attributes[i] = null;
+                List<Contact> contacts = dao.getAllContacts();
+                boolean found = false;
+
+                for (Contact contact: contacts) {
+                    if (contact.equals(c)) {
+                        JOptionPane.showMessageDialog(null, 
+                        "A contact with the same ID exists already",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                        found = true;
+                        break;
+                    }
                 }
-                if (successfullAdd) {
-                    JOptionPane.showMessageDialog(null, 
-                    "Contact was added successfully",
-                    "Success", 
-                    JOptionPane.PLAIN_MESSAGE);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, 
-                    "Adding contact failed, please try again",
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE);
+
+                if (found == false) {
+                    boolean successfullAdd = dao.addContact(c);
+                    c = new Contact();
+                    for (int i=0; i < attributes.length; i++) {
+                        attributes[i] = null;
+                    }
+                    if (successfullAdd) {
+                        JOptionPane.showMessageDialog(null, 
+                        "Contact was added successfully",
+                        "Success", 
+                        JOptionPane.PLAIN_MESSAGE);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, 
+                        "Adding contact failed, please try again",
+                        "Error", 
+                        JOptionPane.ERROR_MESSAGE);
+                    }
                 }
+
             }
 
         }); 

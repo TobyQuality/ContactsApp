@@ -126,8 +126,8 @@ import javax.swing.JTextField;
         //Panels: components that are containers for other components
 
         panel1.add(appLabel);
-        panel2.add(scrollPane);
         panel2.add(searchPanel);
+        panel2.add(scrollPane);
         panel3.add(addButton);
         panel3.add(editButton);
         panel3.add(deleteButton);
@@ -153,6 +153,9 @@ import javax.swing.JTextField;
         //left empty intentionally to implement the interface
     }
 
+    // the two methods below had to be made
+    // in order to make the lambda expression
+    // to function properly.
     public void setContact(Contact con) {
         this.c = con;
     }

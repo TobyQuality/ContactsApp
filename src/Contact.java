@@ -1,5 +1,4 @@
 import java.lang.IllegalArgumentException;
-//import Validator
 
 public class Contact {
     private String id = null;
@@ -10,7 +9,7 @@ public class Contact {
     private String email = null;
     private Validator validator = new Validator();
 
-    public Contact(){
+    public Contact() {
     }
 
     public Contact(String i, String f, String l, String p, String a, String e) {
@@ -29,7 +28,7 @@ public class Contact {
     public void setId(String id) {
         if (this.validator.validateId(id)) {
             this.id = id;
-        }else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -41,7 +40,7 @@ public class Contact {
     public void setFirstName(String firstName) {
         if (this.validator.validateFirstName(firstName)) {
             this.firstName = firstName;
-        }else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -53,7 +52,7 @@ public class Contact {
     public void setLastName(String lastName) {
         if (this.validator.validateLastName(lastName)) {
             this.lastName = lastName;
-        }else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -65,7 +64,7 @@ public class Contact {
     public void setPhoneNumber(String phoneNumber) {
         if (this.validator.validatePhoneNumber(phoneNumber)) {
             this.phoneNumber = phoneNumber;
-        }else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -75,9 +74,12 @@ public class Contact {
     }
 
     public void setAddress(String address) {
-        if (this.validator.validateAddress(address)) {
+        if (address.equals(null) || address.equals("") ||
+            address.equals("null")) {
+            this.address = null;
+        } else if (this.validator.validateAddress(address)) {
             this.address = address;
-        }else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -87,9 +89,12 @@ public class Contact {
     }
 
     public void setEmail(String email) {
-        if (this.validator.validateEmail(email)) {
+        if (email.equals(null) || email.equals("") ||
+            email.equals("null")) {
+            this.email = null;
+        } else if (this.validator.validateEmail(email)) {
             this.email = email;
-        }else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
