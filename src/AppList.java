@@ -2,15 +2,16 @@ import javax.swing.JList;
 import javax.swing.DefaultListModel;
 import java.util.List;
 
-public class ContactList {
+public class AppList {
 
     JList<Contact> contacts = new JList<>();
     DefaultListModel<Contact> model = new DefaultListModel<>();
     CrudContactDao dao = new CrudContactDao();
     List<Contact> list;
 
-    public ContactList() {
+    public AppList() {
         contacts.setModel(model);
+        contacts.setLayoutOrientation(JList.VERTICAL);
         list = dao.getAllContacts();
 
         if (!(list.isEmpty())) {
@@ -18,17 +19,18 @@ public class ContactList {
                 model.addElement(c);
             }
         }
-
     }
 
-    
     public JList<Contact> getContacts() {
         return this.contacts;
     }
 
-    public Contact getContact(Contact c) {
-        return c;
+    public int listSize() {
+        return this.list.size();
+    }
+
+    public Contact getContact(int index) {
+        return this.list.get(index);
     }
     
-
 }

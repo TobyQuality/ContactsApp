@@ -101,8 +101,8 @@ public class Contact {
 
     @Override
     public String toString() {
-        return "Name: " + firstName + " " + lastName + ". Id: " + id 
-        + ". Phone number: " + phoneNumber + ". "
+        return "Name: " + firstName + " " + lastName + 
+        ". Id: " + id + ". Phone number: " + phoneNumber + ". "
         + "Address: " + address + ". Email: " + email + ".";
     }
 

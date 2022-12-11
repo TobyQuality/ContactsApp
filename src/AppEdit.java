@@ -10,7 +10,6 @@ import javax.swing.JTextField;
 
 public class AppEdit extends JFrame implements ActionListener {
 
-    private JFrame editWindow = new JFrame();
     private CrudContactDao dao = new CrudContactDao();
     private String[] attributes = new String[6];
     private Contact c;
@@ -60,8 +59,10 @@ public class AppEdit extends JFrame implements ActionListener {
 
             } catch (IllegalArgumentException err) {
                 validationSuccessful = false;
-                JOptionPane.showMessageDialog(null, "Validation failed, check the correct form",
-                "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, 
+                "Validation failed, check the correct form",
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
                 c = new Contact();
                 for (int i=0; i < attributes.length; i++) {
                     attributes[i] = null;
@@ -75,11 +76,16 @@ public class AppEdit extends JFrame implements ActionListener {
                     attributes[i] = null;
                 }
                 if (successfulUpdate) {
-                    JOptionPane.showMessageDialog(null, "Contact was editted successfully",
-                "Success", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                    "Contact was editted successfully",
+                    "Success", 
+                    JOptionPane.PLAIN_MESSAGE);
+                    this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Editting contact failed, please try again",
-                "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                    "Editting contact failed, please try again",
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -106,18 +112,18 @@ public class AppEdit extends JFrame implements ActionListener {
         jPanel6.add(textField6);
         jPanel7.add(editButton);
 
-        editWindow.setTitle("Edit a contact");
-        editWindow.setSize(400, 400);
-        editWindow.setVisible(true);
-        editWindow.setLayout(new GridLayout(7, 1));
+        this.setTitle("Edit a contact");
+        this.setSize(400, 400);
+        this.setVisible(true);
+        this.setLayout(new GridLayout(7, 1));
 
-        editWindow.add(jPanel1);
-        editWindow.add(jPanel2);
-        editWindow.add(jPanel3);
-        editWindow.add(jPanel4);
-        editWindow.add(jPanel5);
-        editWindow.add(jPanel6);
-        editWindow.add(jPanel7);
+        this.add(jPanel1);
+        this.add(jPanel2);
+        this.add(jPanel3);
+        this.add(jPanel4);
+        this.add(jPanel5);
+        this.add(jPanel6);
+        this.add(jPanel7);
     }
 
     @Override

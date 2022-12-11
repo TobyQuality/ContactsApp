@@ -10,7 +10,6 @@ import javax.swing.JTextField;
 
 public class AppAdd extends JFrame implements ActionListener {
 
-    JFrame addWindow = new JFrame();
     CrudContactDao dao = new CrudContactDao();
     Contact c = new Contact();
     String[] attributes = new String[6];
@@ -23,7 +22,6 @@ public class AppAdd extends JFrame implements ActionListener {
         JTextField textField4 = new JTextField(10);
         JTextField textField5 = new JTextField(10);
         JTextField textField6 = new JTextField(10);
-
 
         JLabel jLabel1 = new JLabel("Id:");
         JLabel jLabel2 = new JLabel("First name:");
@@ -53,8 +51,10 @@ public class AppAdd extends JFrame implements ActionListener {
 
             } catch (IllegalArgumentException err) {
                 validationSuccessful = false;
-                JOptionPane.showMessageDialog(null, "Validation failed, check the correct form",
-                "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, 
+                "Validation failed, check the correct form",
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
                 c = new Contact();
                 for (int i=0; i < attributes.length; i++) {
                     attributes[i] = null;
@@ -69,11 +69,16 @@ public class AppAdd extends JFrame implements ActionListener {
                     attributes[i] = null;
                 }
                 if (successfullAdd) {
-                    JOptionPane.showMessageDialog(null, "Contact was added successfully",
-                "Success", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                    "Contact was added successfully",
+                    "Success", 
+                    JOptionPane.PLAIN_MESSAGE);
+                    this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Adding contact failed, please try again",
-                "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                    "Adding contact failed, please try again",
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -101,18 +106,18 @@ public class AppAdd extends JFrame implements ActionListener {
         jPanel6.add(textField6);
         jPanel7.add(button);
 
-        addWindow.setTitle("Add a new contact");
-        addWindow.setSize(400, 400);
-        addWindow.setVisible(true);
-        addWindow.setLayout(new GridLayout(7, 1));
+        this.setTitle("Add a new contact");
+        this.setSize(400, 400);
+        this.setVisible(true);
+        this.setLayout(new GridLayout(7, 1));
 
-        addWindow.add(jPanel1);
-        addWindow.add(jPanel2);
-        addWindow.add(jPanel3);
-        addWindow.add(jPanel4);
-        addWindow.add(jPanel5);
-        addWindow.add(jPanel6);
-        addWindow.add(jPanel7);
+        this.add(jPanel1);
+        this.add(jPanel2);
+        this.add(jPanel3);
+        this.add(jPanel4);
+        this.add(jPanel5);
+        this.add(jPanel6);
+        this.add(jPanel7);
     }
 
     @Override

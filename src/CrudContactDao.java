@@ -53,8 +53,9 @@ public class CrudContactDao implements ContactDao {
               fw.append("\n");
             }
 
-            fw.append(c.getId() + "," + c.getFirstName() + "," + c.getLastName() + "," +
-            c.getPhoneNumber() + "," + c.getAddress() + "," + c.getEmail());
+            fw.append(c.getId() + "," + c.getFirstName() 
+            + "," + c.getLastName() + "," + c.getPhoneNumber() + "," 
+            + c.getAddress() + "," + c.getEmail());
 
             return true;
       } catch(Exception e) {
@@ -78,8 +79,9 @@ public class CrudContactDao implements ContactDao {
       
       for (int i = 0; i < l.size(); i++) {
         Contact c = l.get(i);
-        fw.append(c.getId() + "," + c.getFirstName() + "," + c.getLastName() + "," +
-                  c.getPhoneNumber() + "," + c.getAddress() + "," + c.getEmail());
+        fw.append(c.getId() + "," + c.getFirstName() + "," 
+        + c.getLastName() + "," +c.getPhoneNumber() + "," 
+        + c.getAddress() + "," + c.getEmail());
 
             if (i + 1 < l.size()) {
               fw.write("\n");
@@ -116,8 +118,9 @@ public class CrudContactDao implements ContactDao {
 
         Contact c = l.get(i);
 
-        fw.append(c.getId() +","+ c.getFirstName() +","+ c.getLastName() +","+
-                  c.getPhoneNumber() + "," + c.getAddress() + "," + c.getEmail());
+        fw.append(c.getId() + ","+ c.getFirstName() + ","
+        + c.getLastName() + "," +c.getPhoneNumber() + ","
+        + c.getAddress() + "," + c.getEmail());
 
             if (i + 1 < l.size()) {
               fw.write("\n");

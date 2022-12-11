@@ -10,12 +10,14 @@ import javax.swing.JTextField;
 
 public class AppDelete extends JFrame implements ActionListener {
 
-    private JFrame editWindow = new JFrame();
     private CrudContactDao dao = new CrudContactDao();
     private String[] attributes = new String[6];
     private Contact c;
 
     public AppDelete(Contact con) {
+        // the Contact Object given as parameter
+        // must be placed inside a local variable
+        // for the lambda expressions to work
         c= con;
 
         JTextField textField1 = new JTextField(10);
@@ -60,7 +62,6 @@ public class AppDelete extends JFrame implements ActionListener {
             c.setAddress(attributes[4]);
             c.setEmail(attributes[5]);
             
-
             //number 3 is random, as JOptionPane.YES_NO_CANCEL_OPTION
             //returns -1,0,1 or 2.
             int answer = 3;
@@ -74,16 +75,22 @@ public class AppDelete extends JFrame implements ActionListener {
 
                 answer = 3;
                 c = new Contact();
+
                 for (int i=0; i < attributes.length; i++) {
                     attributes[i] = null;
                 }
 
                 if (successfulDelete) {
-                    JOptionPane.showMessageDialog(null, "Contact was deleted successfully",
-                "Success", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                    "Contact was deleted successfully",
+                    "Success", 
+                    JOptionPane.PLAIN_MESSAGE);
+                    this.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(null, "Deleting contact failed, please try again",
-                "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                    "Deleting contact failed, please try again",
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
                 }
 
             }
@@ -112,18 +119,18 @@ public class AppDelete extends JFrame implements ActionListener {
         jPanel6.add(textField6);
         jPanel7.add(deleteButton);
 
-        editWindow.setTitle("Delete a contact");
-        editWindow.setSize(400, 400);
-        editWindow.setVisible(true);
-        editWindow.setLayout(new GridLayout(7, 1));
+        this.setTitle("Delete a contact");
+        this.setSize(400, 400);
+        this.setVisible(true);
+        this.setLayout(new GridLayout(7, 1));
 
-        editWindow.add(jPanel1);
-        editWindow.add(jPanel2);
-        editWindow.add(jPanel3);
-        editWindow.add(jPanel4);
-        editWindow.add(jPanel5);
-        editWindow.add(jPanel6);
-        editWindow.add(jPanel7);
+        this.add(jPanel1);
+        this.add(jPanel2);
+        this.add(jPanel3);
+        this.add(jPanel4);
+        this.add(jPanel5);
+        this.add(jPanel6);
+        this.add(jPanel7);
     }
 
     @Override
