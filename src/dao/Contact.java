@@ -1,15 +1,6 @@
-<<<<<<< HEAD
 package dao;
 
 import util.Validator;
-=======
-package dao; // UUPUU!
-
-// import contactsapp.src.util.Validator;
-
-import util.Validator;
-
->>>>>>> eca24847eabe02c3e763f5a606840ffdad39dab7
 import java.lang.IllegalArgumentException;
 
 public class Contact {

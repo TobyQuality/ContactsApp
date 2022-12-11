@@ -73,15 +73,16 @@ import javax.swing.JTextField;
                         + "Email: " + c.getEmail(),
                         "Search successful", 
                         JOptionPane.PLAIN_MESSAGE);
-                        break;
-                    } else {
-                        JOptionPane.showMessageDialog(null, 
-                        "No such contact exists",
-                        "Search unsuccessful",
-                        JOptionPane.PLAIN_MESSAGE);
+                        c = null;
                         break;
                     }
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, 
+                "No such contact exists",
+                "Search unsuccessful",
+                JOptionPane.PLAIN_MESSAGE);
+                c = null;
             }
         });
 
@@ -167,6 +168,5 @@ import javax.swing.JTextField;
         this.appList = new AppList();
         this.contacts = appList.getContacts();
     }
-
 
  }
