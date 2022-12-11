@@ -1,3 +1,6 @@
+package gui;
+
+import dao.*;
 import javax.swing.JList;
 import javax.swing.DefaultListModel;
 import java.util.List;

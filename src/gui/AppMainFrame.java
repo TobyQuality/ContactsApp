@@ -1,5 +1,6 @@
-package contactsapp.src.gui;
+package gui;
 
+import dao.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;

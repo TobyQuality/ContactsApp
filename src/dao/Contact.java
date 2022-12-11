@@ -1,4 +1,6 @@
-import contactsapp.src.util.Validator;
+package dao;
+
+import util.Validator;
 import java.lang.IllegalArgumentException;
 
 public class Contact {
