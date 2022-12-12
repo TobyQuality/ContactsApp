@@ -11,6 +11,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * AppEdit class contains the window for updating contacts.
+ * 
+ * Only the ID cannot be changed, all other attributes can be changed.
+ * Just as with creating a new Contact object, validations have to be
+ * passed in order for the update to be possible.
+ * 
+ * @author Topias Laatu
+ */
 public class AppEdit extends JFrame implements ActionListener {
 
     private CrudContactDao dao = new CrudContactDao();

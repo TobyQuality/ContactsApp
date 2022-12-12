@@ -17,7 +17,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 /**
- * This class creates the main frame for the app's GUI
+ * This class creates the main frame for the app's GUI).
+ * 
+ * The frame has a header, a search bar for contacts,
+ * a list of all the contacts contained within contacts.csv file
+ * and buttons for adding, deleting and updating contacts,
+ * as well as a refresh button to render the app, after
+ * changes have been made to the list.
+ * 
  * @author Topias Laatu
  */
  public class AppMainFrame extends JFrame implements ActionListener {
@@ -26,9 +33,20 @@ import javax.swing.JTextField;
     private AppList appList = null;
     private JList contacts = null;
 
+    /**
+     * The constructor creates the main frame of the GUI.
+     * 
+     * Additional windows are opened by pressing the buttons
+     * with titles "Add", "Edit" and "Delete". A contact has to
+     * be selected with a mouse click from the list in the middle
+     * in order for the edit and delete windows to open.
+     */
     public AppMainFrame() {
         appList = new AppList();
         contacts = appList.getContacts();
+        //the list listener is used for selecting a contact
+        //from the list that is given as a parameter to either
+        //AppEdit() or AppDelete constructors.
         contacts.getSelectionModel().addListSelectionListener(e -> {
             Contact con = (Contact) contacts.getSelectedValue();
             setContact(con);
@@ -52,14 +70,17 @@ import javax.swing.JTextField;
         JPanel searchPanel = new JPanel();
 
         JLabel searchLabel = new JLabel();
-        searchLabel.setText("Search");
+        searchLabel.setText("Search by ID:");
 
         JTextField searchField = new JTextField(10);
 
-        JButton searchButton = new JButton("search");
+        JButton searchButton = new JButton("Search");
+        //the lambda function that is added to the button
+        //is used to look for contacts based on their ID.
         searchButton.addActionListener(e -> {
             String searchString = searchField.getText();
             Contact c = null;
+            boolean found = false;
             if (0 < appList.listSize()) {
                 for (int i=0; i < appList.listSize(); i++) {
                     c = appList.getContact(i);
@@ -67,17 +88,20 @@ import javax.swing.JTextField;
                         JOptionPane.showMessageDialog(null, 
                         "Contact information: " + "\n"
                         + "Id: " + c.getId() + "\n"
-                        + "Name: "+c.getFirstName() +" "+c.getLastName()+"\n"
+                        + "Name: "+ c.getFirstName() +" "+ c.getLastName() +"\n"
                         + "Phone number: " + c.getPhoneNumber() + "\n"
                         + "Address: " + c.getAddress() + "\n"
                         + "Email: " + c.getEmail(),
                         "Search successful", 
                         JOptionPane.PLAIN_MESSAGE);
                         c = null;
+                        found = true;
                         break;
                     }
                 }
-            } else {
+            } 
+            
+            if (found == false) {
                 JOptionPane.showMessageDialog(null, 
                 "No such contact exists",
                 "Search unsuccessful",
@@ -96,6 +120,8 @@ import javax.swing.JTextField;
         addButton.addActionListener(e -> new AppAdd() );
         JButton editButton = new JButton();
         editButton.setText("Edit");
+        //a contact from the JList (within scrollPane variable)
+        //needs to be selected in order for the Edit Window to open
         editButton.addActionListener(e -> {
             if (c != null) {
                 new AppEdit(c);
@@ -104,6 +130,8 @@ import javax.swing.JTextField;
 
         JButton deleteButton = new JButton();
         deleteButton.setText("Delete");
+        //a contact from the JList (within scrollPane variable)
+        //needs to be selected in order for the Delete Window to open
         deleteButton.addActionListener(e -> {
             if (c != null) {
                 new AppDelete(c);
@@ -112,6 +140,13 @@ import javax.swing.JTextField;
         
         JButton refreshButton = new JButton();
         refreshButton.setText("Refresh");
+        //the refresh button's function is needed
+        //to refresh the view of the app after a change
+        //to the contact list is made. This is done
+        //by making a new scrollPane with new
+        //AppList object. The setVisible with
+        //false then true parameters is needed
+        //for "rendering".
         refreshButton.addActionListener(e -> {
             panel2.remove(scrollPane);
             appList = new AppList();
@@ -128,7 +163,6 @@ import javax.swing.JTextField;
         });
 
         //Panels: components that are containers for other components
-
         panel1.add(appLabel);
         panel2.add(searchPanel);
         panel2.add(scrollPane);
@@ -137,9 +171,10 @@ import javax.swing.JTextField;
         panel3.add(deleteButton);
         panel3.add(refreshButton);
 
+        //the "logo" for the application
         ImageIcon image = new ImageIcon("oak.jpg");
 
-        //Frame for the application:
+        //Frame for the application and its configurations
         this.setTitle("Contacts Application");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(750, 500);
@@ -159,11 +194,23 @@ import javax.swing.JTextField;
 
     // the two methods below had to be made
     // in order to make the lambda expression
-    // to function properly.
+    // to function properly, because local variables
+    // can't be manipulated directly in a lambda,
+    // but it can be done through a method call
+
+    /**
+     * Sets a contact within lambda.
+     * @param con
+     */
     public void setContact(Contact con) {
         this.c = con;
     }
 
+    /**
+     * creates a new AppList for the variable
+     * appList and creates a new JList object for the
+     * variable contacts. 
+     */
     public void setContactList() {
         this.appList = new AppList();
         this.contacts = appList.getContacts();

@@ -11,16 +11,27 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * AppDelete class contains the window for deleting contacts.
+ * 
+ * Editing or changing contact information is blocked.
+ * Option window pops up to make sure the user really wants to delete
+ * a contact.
+ * 
+ * @author Topias Laatu
+ */
 public class AppDelete extends JFrame implements ActionListener {
 
     private CrudContactDao dao = new CrudContactDao();
     private String[] attributes = new String[6];
     private Contact c;
 
+    /**
+     * The method creates a new frame for deletion operation.
+     * 
+     * @param con The Contact object is selected from the JList
+     */
     public AppDelete(Contact con) {
-        // the Contact Object given as parameter
-        // must be placed inside a local variable
-        // for the lambda expressions to work
         c= con;
 
         JTextField textField1 = new JTextField(10);
@@ -95,9 +106,7 @@ public class AppDelete extends JFrame implements ActionListener {
                     "Error", 
                     JOptionPane.ERROR_MESSAGE);
                 }
-
             }
-
         });
 
         JPanel jPanel1 = new JPanel();

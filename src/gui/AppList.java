@@ -5,6 +5,13 @@ import javax.swing.JList;
 import javax.swing.DefaultListModel;
 import java.util.List;
 
+/**
+ * AppList class creates the JList component that shows
+ * the personal information within contacts.csv in the AppMainFrame.
+ * 
+ * @author Topias Laatu
+ * 
+ */
 public class AppList {
 
     JList<Contact> contacts = new JList<>();
@@ -12,6 +19,13 @@ public class AppList {
     CrudContactDao dao = new CrudContactDao();
     List<Contact> list;
 
+    /**
+     * The constructor sets the model for the JList,
+     * which makes the manipulation of data possible.
+     * The model is then given Contact objects with the help of
+     * dao object, which returns a List object containing Contact
+     * objects.
+     */
     public AppList() {
         contacts.setModel(model);
         contacts.setLayoutOrientation(JList.VERTICAL);
@@ -24,14 +38,27 @@ public class AppList {
         }
     }
 
+    /**
+     * 
+     * @return contacts - JList component for the GUI
+     */
     public JList<Contact> getContacts() {
         return this.contacts;
     }
 
+    /**
+     * @return the number of the contacts within the list
+     */
     public int listSize() {
         return this.list.size();
     }
 
+    /**
+     * 
+     * @param index
+     * @return a contact contained within list variable
+     * according to its index number.
+     */
     public Contact getContact(int index) {
         return this.list.get(index);
     }

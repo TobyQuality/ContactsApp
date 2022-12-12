@@ -1,6 +1,14 @@
 //import java.util.Scanner;
 //import java.util.List;
 
+/**
+ * This class is not in use, but it can
+ * be used as a command line interface
+ * for testing purposes e.g.,
+ * if the multi line comments are removed.
+ * 
+ * @author Topias Laatu
+ */
 public class TestUI {
     /* 
     private static CrudContactDao dao = new CrudContactDao();

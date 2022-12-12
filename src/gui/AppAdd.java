@@ -12,12 +12,36 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.util.List;
 
+/**
+ * AppAdd class creates a new window for
+ * adding new contacts in the "database"
+ * otherwise known as contacts.csv).
+ * 
+ * If the validations are incorrect, a JOptionPane
+ * pop-up will inform the user of it. Otherwise
+ * a pop-up window will inform of a succesful 
+ * validation and add to the contacts.csv file.
+ * 
+ * @author Topias Laatu
+ */
 public class AppAdd extends JFrame implements ActionListener {
 
     CrudContactDao dao = new CrudContactDao();
     Contact c = new Contact();
     String[] attributes = new String[6];
 
+    /**
+     * The constructor creates a new frame or a window.
+     * 
+     * The window six pairs of labels and textfields according
+     * to the attributes of the Contact and a button, which
+     * has a listener containing a lambda function, which
+     * takes care of adding the contact to the csv file,
+     * if all the validations are passed and there is no
+     * other contacts with the same ID.
+     * 
+     * @author Topias Laatu
+     */
     public AppAdd() {
 
         JTextField textField1 = new JTextField(10);
@@ -69,6 +93,10 @@ public class AppAdd extends JFrame implements ActionListener {
                 List<Contact> contacts = dao.getAllContacts();
                 boolean found = false;
 
+                //after validation has succeeded,
+                //a new check has to be made in order to
+                //make sure that there is no other contact
+                //with the same ID.
                 for (Contact contact: contacts) {
                     if (contact.equals(c)) {
                         JOptionPane.showMessageDialog(null, 
@@ -80,6 +108,8 @@ public class AppAdd extends JFrame implements ActionListener {
                     }
                 }
 
+                //if no duplicate ID is found, the new contact
+                //can be added to the "database"
                 if (found == false) {
                     boolean successfullAdd = dao.addContact(c);
                     c = new Contact();
