@@ -40,8 +40,14 @@ public class AppEdit extends JFrame implements ActionListener {
         textField4.setText(c.getPhoneNumber());
         JTextField textField5 = new JTextField(10);
         textField5.setText(c.getAddress());
+        if (c.getAddress().equals("null")) {
+            textField5.setText("");
+        }
         JTextField textField6 = new JTextField(10);
         textField6.setText(c.getEmail());
+        if (c.getEmail().equals("null")) {
+            textField6.setText("");
+        }
 
         JLabel jLabel1 = new JLabel("Id:");
         JLabel jLabel2 = new JLabel("First name:");
@@ -51,6 +57,7 @@ public class AppEdit extends JFrame implements ActionListener {
         JLabel jLabel6 = new JLabel("Email:");
 
         JButton editButton = new JButton("Edit");
+
         editButton.addActionListener(e -> {
             attributes[0] = textField1.getText();
             attributes[1] = textField2.getText();

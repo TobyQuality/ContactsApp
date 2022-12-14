@@ -49,9 +49,15 @@ public class AppDelete extends JFrame implements ActionListener {
         JTextField textField5 = new JTextField(10);
         textField5.setText(c.getAddress());
         textField5.setEditable(false);
+        if (c.getAddress().equals("null")) {
+            textField5.setText("");
+        }
         JTextField textField6 = new JTextField(10);
         textField6.setText(c.getEmail());
         textField6.setEditable(false);
+        if (c.getEmail().equals("null")) {
+            textField6.setText("");
+        }
 
         JLabel jLabel1 = new JLabel("Id:");
         JLabel jLabel2 = new JLabel("First name:");

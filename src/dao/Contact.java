@@ -112,7 +112,7 @@ public class Contact {
     public void setAddress(String address) {
         if (address.equals(null) || address.equals("") ||
             address.equals("null")) {
-            this.address = null;
+            this.address = "null";
         } else if (this.validator.validateAddress(address)) {
             this.address = address;
         } else {
@@ -127,7 +127,7 @@ public class Contact {
     public void setEmail(String email) {
         if (email.equals(null) || email.equals("") ||
             email.equals("null")) {
-            this.email = null;
+            this.email = "null";
         } else if (this.validator.validateEmail(email)) {
             this.email = email;
         } else {
