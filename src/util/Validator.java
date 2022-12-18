@@ -36,17 +36,16 @@ public class Validator {
         boolean thirdValidation = false;
         boolean fourthValidation = false;
         boolean fifthValidation = false;
+        boolean sixthValidation = false;
         boolean valid = false;
         
         //first validation = checking if the id has right character types
         //and if it has 11 characters
-        
         String rightCharacters = "\\d{6}[-A]\\d{3}[0-9A-FHJ-OPR-Y]";
         if (id.matches(rightCharacters)) {
             firstValidation = true;
         }
         
-
         //second validation = checking the validity of day
         if (firstValidation) {
             //in the third validation the second
@@ -149,15 +148,37 @@ public class Validator {
             if (pass) {
                 fifthValidation = true;
             }
-
         }
 
-        //sixth validation = calculating the hash from
+        //sixth validation = checking, if the century mark
+        //('-' for 1900 century or 'A' for 2000 century)
+        //is valid. Basically only the 2000 century's
+        //validity is checked
+        if (fifthValidation) {
+            boolean pass = false;
+            int year = Integer.parseInt(id.substring(4,6));
+
+            //the year when this code was written = 2022
+            //A date object returning the current year would work better. :/
+            if (year > 22) {
+                if (id.charAt(6) == '-') {
+                    pass = true;
+                }
+            } else {
+                pass = true;
+            }
+
+            if (pass) {
+                sixthValidation = true;
+            }
+        }
+
+        //seventh and final validation = calculating the hash from
         //merging all the numbers together by dividing them
         //by 31 and determining the check digit based on
         //the remainder of the division (if remainder = 10,
         //the check digit will be A).
-        if (fifthValidation) {
+        if (sixthValidation) {
             char[] checkDigits = {'0','1','2','3','4','5','6','7','8','9','A',
             'B','C','D','E','F','H','J','K','L','M','N','P','R','S','T','U',
             'V','W','X','Y'};
