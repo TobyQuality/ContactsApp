@@ -31,7 +31,7 @@ import javax.swing.JTextField;
 
     private Contact c = null;
     private AppList appList = null;
-    private JList contacts = null;
+    private JList jList = null;
 
     /**
      * The constructor creates the main frame of the GUI.
@@ -43,12 +43,12 @@ import javax.swing.JTextField;
      */
     public AppMainFrame() {
         appList = new AppList();
-        contacts = appList.getContacts();
+        jList = appList.showContacts();
         //the list listener is used for selecting a contact
         //from the list that is given as a parameter to either
         //AppEdit() or AppDelete constructors.
-        contacts.getSelectionModel().addListSelectionListener(e -> {
-            Contact con = (Contact) contacts.getSelectedValue();
+        jList.getSelectionModel().addListSelectionListener(e -> {
+            Contact con = (Contact) jList.getSelectedValue();
             setContact(con);
         });
 
@@ -64,8 +64,8 @@ import javax.swing.JTextField;
 
         // these elements go into panel2
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setViewportView(contacts);
-        contacts.setLayoutOrientation(JList.VERTICAL);
+        scrollPane.setViewportView(jList);
+        jList.setLayoutOrientation(JList.VERTICAL);
 
         JPanel searchPanel = new JPanel();
 
@@ -150,12 +150,12 @@ import javax.swing.JTextField;
         refreshButton.addActionListener(e -> {
             panel2.remove(scrollPane);
             appList = new AppList();
-            contacts = appList.getContacts();
-            scrollPane.setViewportView(contacts);
-            contacts.setLayoutOrientation(JList.VERTICAL);
+            jList = appList.showContacts();
+            scrollPane.setViewportView(jList);
+            jList.setLayoutOrientation(JList.VERTICAL);
             panel2.add(scrollPane);
-            contacts.getSelectionModel().addListSelectionListener(event -> {
-                Contact con = (Contact) contacts.getSelectedValue();
+            jList.getSelectionModel().addListSelectionListener(event -> {
+                Contact con = (Contact) jList.getSelectedValue();
                 setContact(con);
             });
             this.setVisible(false);
@@ -213,7 +213,7 @@ import javax.swing.JTextField;
      */
     public void setContactList() {
         this.appList = new AppList();
-        this.contacts = appList.getContacts();
+        this.jList = appList.showContacts();
     }
 
  }

@@ -92,7 +92,6 @@ public class AppAdd extends JFrame implements ActionListener {
             if (validationSuccessful) {
                 List<Contact> contacts = dao.getAllContacts();
                 boolean found = false;
-
                 //after validation has succeeded,
                 //a new check has to be made in order to
                 //make sure that there is no other contact
@@ -129,9 +128,7 @@ public class AppAdd extends JFrame implements ActionListener {
                         JOptionPane.ERROR_MESSAGE);
                     }
                 }
-
             }
-
         }); 
 
         JPanel jPanel1 = new JPanel();

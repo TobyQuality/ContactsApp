@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class AppList {
 
-    JList<Contact> contacts = new JList<>();
+    JList<Contact> contactsShown = new JList<>();
     DefaultListModel<Contact> model = new DefaultListModel<>();
     CrudContactDao dao = new CrudContactDao();
     List<Contact> list;
@@ -27,8 +27,8 @@ public class AppList {
      * objects.
      */
     public AppList() {
-        contacts.setModel(model);
-        contacts.setLayoutOrientation(JList.VERTICAL);
+        contactsShown.setModel(model);
+        contactsShown.setLayoutOrientation(JList.VERTICAL);
         list = dao.getAllContacts();
 
         if (!(list.isEmpty())) {
@@ -42,8 +42,8 @@ public class AppList {
      * 
      * @return contacts - JList component for the GUI
      */
-    public JList<Contact> getContacts() {
-        return this.contacts;
+    public JList<Contact> showContacts() {
+        return this.contactsShown;
     }
 
     /**

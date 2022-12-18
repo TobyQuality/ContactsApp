@@ -60,6 +60,7 @@ public class Contact {
     }
 
     public void setId(String id) {
+
         if (this.validator.validateId(id)) {
             this.id = id;
         } else {
@@ -152,5 +153,6 @@ public class Contact {
         ". Id: " + id + ". Phone number: " + phoneNumber + ". "
         + "Address: " + address + ". Email: " + email + ".";
     }
+
 
 }
