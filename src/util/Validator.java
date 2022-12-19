@@ -1,4 +1,6 @@
 package util;
+
+import java.time.LocalDate;
 /**
  * Validation class is used in the Contact class's set methods.
  * 
@@ -158,9 +160,12 @@ public class Validator {
             boolean pass = false;
             int year = Integer.parseInt(id.substring(4,6));
 
-            //the year when this code was written = 2022
-            //A date object returning the current year would work better. :/
-            if (year > 22) {
+            LocalDate localDate = LocalDate.now();
+            String currentYearStringified = String.valueOf(localDate.getYear());
+            String substring = currentYearStringified.substring(2,4);
+            int currentYear = Integer.parseInt(substring);
+
+            if (year > currentYear) {
                 if (id.charAt(6) == '-') {
                     pass = true;
                 }
