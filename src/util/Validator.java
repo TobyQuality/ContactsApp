@@ -207,12 +207,22 @@ public class Validator {
     /**
      * Used for validating first name
      * 
+     * It is worth to note that there must be a capital letter first.
+     * regEx1 variable is for the normal form of a name.
+     * regEx2 variable contains model that takes into account,
+     * if a dash character is used. In that case, the next
+     * character after dash must be a capital letter.
      */
     public boolean validateFirstName(String firstName) {
         boolean valid = false;
-        String regEx = "[a-zåäöA-ZÅÄÖ-]+";
+        String regEx1 = "[A-ZÅÄÖ][a-zåäöA-ZÅÄÖ]+";
+        String regEx2 = "[A-ZÅÄÖ][a-zåäö]+[-][A-ZÅÄÖ][a-zåäö]+";
 
-        if (firstName.matches(regEx)) {
+        if (firstName.matches(regEx1)) {
+            valid = true;
+        }
+
+        if (firstName.matches(regEx2)) {
             valid = true;
         }
 
@@ -222,12 +232,22 @@ public class Validator {
     /**
      * Used for validating last name
      * 
+     * It is worth to note that there must be a capital letter first.
+     * regEx1 variable is for the normal form of a name.
+     * regEx2 variable contains model that takes into account,
+     * if a dash character is used. In that case, the next
+     * character after dash must be a capital letter.
      */
     public boolean validateLastName(String lastName) {
         boolean valid = false;
-        String regEx = "[a-zåäöA-ZÅÄÖ-]+";
+        String regEx1 = "[A-ZÅÄÖ][a-zåäöA-ZÅÄÖ]+";
+        String regEx2 = "[A-ZÅÄÖ][a-zåäö]+[-][A-ZÅÄÖ][a-zåäö]+";
 
-        if (lastName.matches(regEx)) {
+        if (lastName.matches(regEx1)) {
+            valid = true;
+        }
+
+        if (lastName.matches(regEx2)) {
             valid = true;
         }
 
@@ -239,7 +259,7 @@ public class Validator {
      * 
      * There are two regular expression patterns that can be used, 
      * one for the mobile numbers, one for the old style phones.
-     * The mobilephone has to have +358 followed by nine numbers.
+     * The mobilephone has to have +358 followed by six or nine numbers.
      * The old style connection must have two digits beginning with 0
      * followed by 7 numbers.
      * 
