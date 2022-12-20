@@ -1,3 +1,5 @@
+![App](/App.PNG)
+
 # ContactsApp
 
 This application is a good way for handling your contacts! It is easy and simple to use, employing CRUD functions.
