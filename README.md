@@ -27,7 +27,7 @@ Enjoy using the application!
 
 ### Credits
 
-Lecturer Jussi Pohjolainen, lecturer Teemu Havumäki, youtube channels Brocode and Lazic B and my student colleague Samuel Kataja.
+Lecturer Jussi Pohjolainen, lecturer Teemu Havumäki and youtube channels Brocode and Lazic B.
 
 ### Presentation video
 Link to presentation video: https://youtu.be/ycTJvs3DjV0
