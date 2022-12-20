@@ -32,4 +32,5 @@ Lecturer Jussi Pohjolainen, lecturer Teemu Havumäki and youtube channels Brocod
 ### Presentation video
 Link to presentation video: https://youtu.be/ycTJvs3DjV0
 
+### Picture of the App
 ![App](/App.PNG)
