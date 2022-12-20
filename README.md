@@ -1,5 +1,3 @@
-![App](/App.PNG)
-
 # ContactsApp
 
 This application is a good way for handling your contacts! It is easy and simple to use, employing CRUD functions.
@@ -33,3 +31,5 @@ Lecturer Jussi Pohjolainen, lecturer Teemu Havumäki and youtube channels Brocod
 
 ### Presentation video
 Link to presentation video: https://youtu.be/ycTJvs3DjV0
+
+![App](/App.PNG)
